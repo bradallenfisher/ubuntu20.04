@@ -33,3 +33,7 @@ mkdir /var/log/php-fpm/
 echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.0/fpm/pool.d/www.conf
 echo request_slowlog_timeout = 2s >> /etc/php/7.0/fpm/pool.d/www.conf
 echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.0/fpm/pool.d/www.conf
+
+service apache2 restart
+service mysqld restart
+service php7.0-fpm restart
