@@ -14,12 +14,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # run script as root
   config.vm.provision "shell",
-    path: "install/root.sh"
+    path: "stack.sh"
     # run script as vagrant user
-    
-  config.vm.provision "shell",
-    path: "install/post-install.sh",
-    privileged: FALSE
 
   # virtual box name
   config.vm.provider "virtualbox" do |v|
