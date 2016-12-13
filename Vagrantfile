@@ -18,7 +18,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # virtual box name
   config.vm.provider "virtualbox" do |v|
-    v.name = "ubuntu16"
+    v.name = "ubuntu16.04"
     v.memory = 4096
   end
 end
