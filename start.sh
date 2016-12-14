@@ -39,7 +39,7 @@ systemctl daemon-reload
 
 # Varnish can listen
 sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
-sed -i 's/80/8080/g' /etc/apache2/000-default.conf
+sed -i 's/80/8080/g' /etc/apache2/sites-available/000-default.conf
 
 
 # Sanity Logs
@@ -49,7 +49,6 @@ echo request_slowlog_timeout = 2s >> /etc/php/7.0/fpm/pool.d/www.conf
 echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.0/fpm/pool.d/www.conf
 
 # BASIC PERFORMANCE SETTINGS
-mkdir /etc/httpd/conf.performance.d/
 cat performance/compression.conf > /etc/apache2/conf-available/compression.conf
 a2enconf compression
 cat performance/content_transformation.conf > /etc/apache2/conf-available/content_transformation.conf
