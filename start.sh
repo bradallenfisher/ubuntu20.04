@@ -33,8 +33,13 @@ a2enmod ssl rewrite headers
 
 # varnish
 apt-get install varnish -y
-cat varnish/default.vcl > /etc/varnish/default.vcl
-cat varnish/varnish.params > /etc/default/varnish
+#cat varnish/default.vcl > /etc/varnish/default.vcl
+#cat varnish/varnish.params > /etc/default/varnish
+
+# Varnish can listen
+sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
+sed -i 's/80/8080/g' /etc/apache2/000-default.conf
+
 
 # Sanity Logs
 mkdir /var/log/php-fpm/
