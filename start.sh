@@ -34,7 +34,7 @@ a2enmod ssl rewrite headers
 # varnish
 apt-get install varnish -y
 mkdir /etc/systemd/system/varnish.service.d/
-cat varnish/customexec.conf > /etc/systemd/system/varnish.service.d/customexec.conf
+cat varnish/varnish.service > /lib/systemd/system/varnish.service
 cat varnish/default.vcl > /etc/varnish/default.vcl
 
 
