@@ -68,10 +68,6 @@ a2enconf filename-based_cache_busting
 # Security Basics
 cat security/security.conf > /etc/apache2/conf-available/security.conf
 
-# PHP
-# The first pool
-cat php/www.conf > /etc/php/7.0/fpm/pool.d/www.conf
-
 #opcache settings
 cat php/opcache.ini > /etc/php/7.0/mods-available/opcache.ini
 
