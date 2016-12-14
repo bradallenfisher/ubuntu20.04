@@ -25,8 +25,16 @@ apt-get -y install php php-fpm php-common php-mysql php-ldap php-cgi php-pear ph
 a2enmod proxy_fcgi setenvif
 a2enconf php7.0-fpm
 
+# fix date timezone errors
+sed -i 's#;date.timezone =#date.timezone = "America/New_York"#g' /etc/php/7.0/fpm/php.ini
+
 # enable apache headers
 a2enmod ssl rewrite headers
+
+# varnish
+apt-get install varnish -y
+cat varnish/default.vcl > /etc/varnish/default.vcl
+cat varnish/varnish.params > /etc/default/varnish
 
 # Sanity Logs
 mkdir /var/log/php-fpm/
@@ -34,6 +42,22 @@ echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.0/fpm/pool.d/www.conf
 echo request_slowlog_timeout = 2s >> /etc/php/7.0/fpm/pool.d/www.conf
 echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.0/fpm/pool.d/www.conf
 
+# BASIC PERFORMANCE SETTINGS
+mkdir /etc/httpd/conf.performance.d/
+cat performance/compression.conf > /etc/httpd/conf.performance.d/compression.conf
+cat performance/content_transformation.conf > /etc/httpd/conf.performance.d/content_transformation.conf
+cat performance/etags.conf > /etc/httpd/conf.performance.d/etags.conf
+cat performance/expires_headers.conf > /etc/httpd/conf.performance.d/expires_headers.conf
+cat performance/file_concatenation.conf > /etc/httpd/conf.performance.d/file_concatenation.conf
+cat performance/filename-based_cache_busting.conf > /etc/httpd/conf.performance.d/filename-based_cache_busting.conf
+
 service apache2 restart
 service mysqld restart
 service php7.0-fpm restart
+service varnish restart
+
+
+# Install Drush globally.
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+ln -s /usr/local/bin/composer /usr/bin/composer
