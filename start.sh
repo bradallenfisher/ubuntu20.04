@@ -33,8 +33,9 @@ a2enmod ssl rewrite headers
 
 # varnish
 apt-get install varnish -y
-#cat varnish/default.vcl > /etc/varnish/default.vcl
-#cat varnish/varnish.params > /etc/default/varnish
+cat varnish/customexec.conf > /etc/systemd/system/varnish.service.d/customexec.conf
+cat varnish/default.vcl > /etc/varnish/default.vcl
+
 
 # Varnish can listen
 sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
