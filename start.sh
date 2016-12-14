@@ -44,12 +44,15 @@ echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.0
 
 # BASIC PERFORMANCE SETTINGS
 mkdir /etc/httpd/conf.performance.d/
-cat performance/compression.conf > /etc/httpd/conf.performance.d/compression.conf
-cat performance/content_transformation.conf > /etc/httpd/conf.performance.d/content_transformation.conf
-cat performance/etags.conf > /etc/httpd/conf.performance.d/etags.conf
-cat performance/expires_headers.conf > /etc/httpd/conf.performance.d/expires_headers.conf
-cat performance/file_concatenation.conf > /etc/httpd/conf.performance.d/file_concatenation.conf
-cat performance/filename-based_cache_busting.conf > /etc/httpd/conf.performance.d/filename-based_cache_busting.conf
+cat performance/compression.conf > /etc/apache2/conf-available/compression.conf
+cat performance/content_transformation.conf > /etc/apache2/conf-available/content_transformation.conf
+cat performance/etags.conf > /etc/apache2/conf-available/etags.conf
+cat performance/expires_headers.conf > /etc/apache2/conf-available/expires_headers.conf
+cat performance/file_concatenation.conf > /etc/apache2/conf-available/file_concatenation.conf
+cat performance/filename-based_cache_busting.conf > /etc/apache2/conf-available/filename-based_cache_busting.conf
+
+# Security Basics
+cat security/security.conf > /etc/apache2/conf-available/security.conf
 
 service apache2 restart
 service mysqld restart
