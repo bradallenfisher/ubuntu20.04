@@ -33,10 +33,9 @@ a2enmod ssl rewrite headers
 
 # varnish
 apt-get install varnish -y
-mkdir /etc/systemd/system/varnish.service.d/
 cat varnish/varnish.service > /lib/systemd/system/varnish.service
 cat varnish/default.vcl > /etc/varnish/default.vcl
-
+systemctl daemon-reload
 
 # Varnish can listen
 sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
@@ -52,14 +51,27 @@ echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.0
 # BASIC PERFORMANCE SETTINGS
 mkdir /etc/httpd/conf.performance.d/
 cat performance/compression.conf > /etc/apache2/conf-available/compression.conf
+a2enconf compression
 cat performance/content_transformation.conf > /etc/apache2/conf-available/content_transformation.conf
+a2enconf content_transformation
 cat performance/etags.conf > /etc/apache2/conf-available/etags.conf
+a2enconf etags
 cat performance/expires_headers.conf > /etc/apache2/conf-available/expires_headers.conf
+a2enconf expires_headers
 cat performance/file_concatenation.conf > /etc/apache2/conf-available/file_concatenation.conf
+a2enconf file_concatenation
 cat performance/filename-based_cache_busting.conf > /etc/apache2/conf-available/filename-based_cache_busting.conf
+a2enconf filename-based_cache_busting
 
 # Security Basics
 cat security/security.conf > /etc/apache2/conf-available/security.conf
+
+# PHP
+# The first pool
+cat php/www.conf > /etc/php/7.0/fpm/pool.d/www.conf
+
+#opcache settings
+cat php/opcache.ini > /etc/php/7.0/mods-available/opcache.ini
 
 service apache2 restart
 service mysqld restart
