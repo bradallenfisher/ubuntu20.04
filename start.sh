@@ -67,9 +67,9 @@ a2enconf filename-based_cache_busting
 
 # Security Basics
 cat security/security.conf > /etc/apache2/conf-available/security.conf
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/g' /etc/php/7.0/fpm/php.ini
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/g' /etc/php/7.0/cgi/php.ini
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=1/g' /etc/php/7.0/cli/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/fpm/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/cgi/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/cli/php.ini
 
 #opcache settings
 cat php/opcache.ini > /etc/php/7.0/mods-available/opcache.ini
