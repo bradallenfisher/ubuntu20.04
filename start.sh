@@ -33,13 +33,13 @@ a2enmod ssl rewrite headers
 
 # varnish
 apt-get install varnish -y
-#cp /lib/systemd/system/varnish.service /etc/systemd/system/
+cp /lib/systemd/system/varnish.service /etc/systemd/system/
 cat varnish/default.vcl > /etc/varnish/default.vcl
 
 # Varnish can listen
 sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
 sed -i 's/80/8080/g' /etc/apache2/sites-available/000-default.conf
-#sed -i 's/6081/80/g' /etc/systemd/system/varnish.service
+sed -i 's/6081/80/g' /etc/systemd/system/varnish.service
 
 systemctl daemon-reload
 systemctl reload varnish.service
