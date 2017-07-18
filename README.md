@@ -8,7 +8,7 @@ apt-get update && apt-get -y install git && git clone https://github.com/bradall
 - add drush for that user
 ``` shell
 # Install Drush
-composer global require drush/drush:7.*	
+composer global require drush/drush:8.*	
 echo 'export PATH="$HOME/.config/composer/vendor/bin:$PATH"' >> $HOME/.bashrc
 echo 'export PATH="$HOME/.composer/vendor/bin:$PATH"' >> $HOME/.bashrc
 source $HOME/.bashrc
