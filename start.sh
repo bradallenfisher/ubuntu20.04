@@ -6,13 +6,15 @@ apt-get upgrade -y
 export DEBIAN_FRONTEND=noninteractive
 
 #Install Mariadb
-apt-get install software-properties-common -y
-apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.utexas.edu/mariadb/repo/10.1/ubuntu xenial main'
+#apt-get install software-properties-common -y
+#apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+#add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.utexas.edu/mariadb/repo/10.1/ubuntu xenial main'
 
 #update again after new repo and install the db server.
-apt-get update -y
-apt-get install mariadb-server -y
+#apt-get update -y
+#apt-get install mariadb-server -y
+# Install Mysql
+apt-get -y install mysql-server
 
 # Install apache
 apt-get -y install apache2
@@ -32,17 +34,17 @@ sed -i 's#;date.timezone =#date.timezone = "America/New_York"#g' /etc/php/7.0/fp
 a2enmod ssl rewrite headers
 
 # varnish
-apt-get install varnish -y
-cat varnish/default.vcl > /etc/varnish/default.vcl
+#apt-get install varnish -y
+#cat varnish/default.vcl > /etc/varnish/default.vcl
 
 # Varnish can listen
-sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
-sed -i 's/80/8080/g' /etc/apache2/sites-available/000-default.conf
-sed -i 's/6081/80/g' /lib/systemd/system/varnish.service
+#sed -i 's/Listen 80/Listen 8080/g' /etc/apache2/ports.conf
+#sed -i 's/80/8080/g' /etc/apache2/sites-available/000-default.conf
+#sed -i 's/6081/80/g' /lib/systemd/system/varnish.service
 
-systemctl daemon-reload
-systemctl reload varnish.service
-service apache2 restart
+#systemctl daemon-reload
+#systemctl reload varnish.service
+#service apache2 restart
 
 # Sanity Logs
 mkdir /var/log/php-fpm/
@@ -79,7 +81,7 @@ a2enmod expires
 service apache2 restart
 service mysqld restart
 service php7.0-fpm restart
-service varnish restart
+#service varnish restart
 
 # Install Drush globally.
 curl -sS https://getcomposer.org/installer | php
