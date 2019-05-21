@@ -1,4 +1,4 @@
-# make sure we're up to date with 5.6 repos
+# make sure we're up to date
 apt-get update -y
 
 # Needed to make sure that we have mcrypt which apparently is ok again. 
