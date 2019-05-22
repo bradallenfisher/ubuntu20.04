@@ -4,7 +4,7 @@ apt-get upgrade -y
 export DEBIAN_FRONTEND=noninteractive
 
 # Get ready for common repos
-apt-get install software-properties-common python-software-properties
+apt-get -y install software-properties-common python-software-properties
 
 #Install Mariadb
 #apt-get install software-properties-common -y
