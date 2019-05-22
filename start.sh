@@ -1,9 +1,10 @@
 # make sure we're up to date
 apt-get update -y
-
-# Needed to make sure that we have mcrypt which apparently is ok again. 
 apt-get upgrade -y
 export DEBIAN_FRONTEND=noninteractive
+
+# Get ready for common repos
+apt-get install software-properties-common python-software-properties
 
 #Install Mariadb
 #apt-get install software-properties-common -y
@@ -23,9 +24,11 @@ apt-get -y install apache2
 apt-get -y install uuid uuid-runtime curl policycoreutils unzip patch git nano gcc make mcrypt
 
 #install php
-apt-get -y install php php-fpm php-common php-mysqlnd php-ldap php-cgi php-pear php-xml-parser php-curl php-gd php-cli php-fpm php-apcu php-dev php-mcrypt mcrypt
+add-apt-repository -y ppa:ondrej/php
+apt-get update
+apt-get -y install php7.2 php7.2-fpm php7.2-common php7.2-mysqlnd php7.2-ldap php7.2-cgi php7.2-pear php7.2-xml-parser php7.2-curl php7.2-gd php7.2-cli php7.2-fpm php7.2-apcu php7.2-dev php7.2-mcrypt mcrypt
 a2enmod proxy_fcgi setenvif
-a2enconf php7.0-fpm
+a2enconf php7.2-fpm
 
 # fix date timezone errors
 sed -i 's#;date.timezone =#date.timezone = "America/New_York"#g' /etc/php/7.0/fpm/php.ini
