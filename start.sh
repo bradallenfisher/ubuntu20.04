@@ -51,9 +51,9 @@ a2enmod ssl rewrite headers
 
 # Sanity Logs
 mkdir /var/log/php-fpm/
-echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.0/fpm/pool.d/www.conf
-echo request_slowlog_timeout = 2s >> /etc/php/7.0/fpm/pool.d/www.conf
-echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.0/fpm/pool.d/www.conf
+echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.2/fpm/pool.d/www.conf
+echo request_slowlog_timeout = 2s >> /etc/php/7.2/fpm/pool.d/www.conf
+echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.2/fpm/pool.d/www.conf
 
 # BASIC PERFORMANCE SETTINGS
 cat performance/compression.conf > /etc/apache2/conf-available/compression.conf
@@ -71,19 +71,19 @@ a2enconf filename-based_cache_busting
 
 # Security Basics
 cat security/security.conf > /etc/apache2/conf-available/security.conf
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/fpm/php.ini
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/cgi/php.ini
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.0/cli/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/fpm/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/cgi/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.2/cli/php.ini
 
 #opcache settings
-cat php/opcache.ini > /etc/php/7.0/mods-available/opcache.ini
+cat php/opcache.ini > /etc/php/7.2/mods-available/opcache.ini
 
 #Modules
 a2enmod expires
 
 service apache2 restart
 service mysqld restart
-service php7.0-fpm restart
+service php7.2-fpm restart
 #service varnish restart
 
 # Install Drush globally.
