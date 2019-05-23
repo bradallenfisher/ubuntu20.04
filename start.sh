@@ -16,6 +16,8 @@ apt-get -y install uuid uuid-runtime curl policycoreutils unzip patch git nano g
 
 #install php
 apt-get -y install software-properties-common python-software-properties
+add-apt-repository -y ppa:ondrej/php
+apt-get update
 apt-get -y install php7.2 php7.2-common php7.2-mysql php7.2-ldap php7.2-cgi php7.2-xml php7.2-curl php7.2-gd php7.2-cli php7.2-fpm php7.2-dev php7.2-mbstring
 
 apt-get -y install libapache2-mod-fastcgi
