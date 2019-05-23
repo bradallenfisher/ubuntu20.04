@@ -30,7 +30,6 @@ sed -i 's#;date.timezone =#date.timezone = "America/New_York"#g' /etc/php/7.2/fp
 # enable apache headers
 a2enmod ssl rewrite headers
 
-
 # Sanity Logs
 mkdir /var/log/php-fpm/
 echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.2/fpm/pool.d/www.conf
@@ -66,7 +65,6 @@ a2enmod expires
 service apache2 restart
 service mysql restart
 service php7.2-fpm restart
-service varnish restart
 
 # Install Drush globally.
 curl -sS https://getcomposer.org/installer | php
