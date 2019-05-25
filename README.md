@@ -2,6 +2,9 @@
 ``` shell
 apt-get update && apt-get -y install git && git clone https://github.com/bradallenfisher/ubuntu16.04.git && cd ubuntu16.04 && chmod 700 start.sh && ./start.sh
 ```
+# TODO ... better Vagrant instructions
+Clone repo and then cd into the repo and run vagrant up
+
 ## After Install
 - run mysql_secure_installation
 - create a non privileged user
