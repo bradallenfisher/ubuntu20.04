@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # ip address
   config.vm.network "private_network", ip: "192.168.16.16"
   # host name
-  config.vm.hostname = "local.ubuntu16.dev"
+  config.vm.hostname = "local.ubuntu16.test"
 
   # run script as root
   config.vm.provision "shell",
