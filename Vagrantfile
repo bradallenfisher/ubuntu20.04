@@ -5,8 +5,8 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # centos 7
-  config.vm.box = "bradallenfisher/ubuntu16"
+  # ubuntu 16
+  config.vm.box = "ubuntu/xenial64"
   # ip address
   config.vm.network "private_network", ip: "192.168.16.16"
   # host name
