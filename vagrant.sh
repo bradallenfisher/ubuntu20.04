@@ -6,7 +6,17 @@ apt-get upgrade -y
 export DEBIAN_FRONTEND=noninteractive
 
 # MySql
-apt-get -y install mysql-server
+
+rm /etc/mysql/ -rf 
+rm /var/lib/mysql 
+rm /var/log/mysql  
+rm /var/lib/mysql-filters  
+rm /var/lib/mysql-keyring 
+rm /var/lib/mysql/debian-5.7.flag 
+apt-get install software-properties-common -y
+add-apt-repository -y ppa:ondrej/mysql-5.6 -y
+apt-get update -y
+apt-get install mysql-server-5.6 -y
 
 # Install apache
 apt-get -y install apache2
