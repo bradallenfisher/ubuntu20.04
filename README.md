@@ -12,6 +12,11 @@ vagrant up
 vagrant ssh
 ```
 
+## For each domain entry you will need to edit your /etc/hosts file to add a line like this
+```shell
+192.168.16.04       local.psufandb.test
+```
+
 # Install Drush
 ``` shell
 composer global require drush/drush:8.*	
