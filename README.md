@@ -1,8 +1,14 @@
 # Vagrant instructions
 - Download [Vagrant](https://www.vagrantup.com/) and [Virtualbox](https://www.virtualbox.org/)
 - Clone repo to local directory on your computer
-- Cd into directory and run
-
+```shell
+git clone https://github.com/bradallenfisher/ubuntu16.04.git
+```
+- Cd into directory
+```shell
+cd ubuntu16.04
+```
+- Start vagrant
 ```shell
 vagrant up
 ```
