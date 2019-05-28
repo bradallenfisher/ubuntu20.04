@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # ip address
   config.vm.network "private_network", ip: "192.168.16.04"
   # host name
-  config.vm.hostname = "local.ubuntu16.test"
+  config.vm.hostname = "local.psufandb.test"
   # synced with NFS
   config.vm.synced_folder "./psufandb", "/var/www/html/psufandb", type: "nfs"
 
@@ -20,7 +20,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # virtual box name
   config.vm.provider "virtualbox" do |v|
-    v.name = "ubuntu16.04"
+    v.name = "psufandb"
     v.memory = 4096
   end
 end
