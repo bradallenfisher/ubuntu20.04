@@ -22,6 +22,15 @@ vagrant up
 ```shell
 vagrant ssh
 ```
+## Add frontend stack to VM
+```shell
+npm install --global gulp-cli
+npm install -g bower
+cd to theme(s)
+npm install
+bower install
+gulp
+```
 
 ## For each domain entry you will need to edit your /etc/hosts file to add a line like this
 ```shell
