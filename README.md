@@ -25,7 +25,7 @@ vagrant ssh
 
 ## For each domain entry you will need to edit your /etc/hosts file to add a line like this
 ```shell
-192.168.16.04       local.psufandb.test
+192.168.16.16       local.psufandb.test
 ```
 
 # Install Drush
