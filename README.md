@@ -8,6 +8,11 @@ git clone https://github.com/bradallenfisher/ubuntu16.04.git
 ```shell
 cd ubuntu16.04
 ```
+## add synced folder
+```shell
+mkdir psufandb
+```
+
 - Start vagrant
 ```shell
 vagrant up
