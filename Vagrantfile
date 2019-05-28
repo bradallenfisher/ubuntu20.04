@@ -8,7 +8,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # ubuntu 16
   config.vm.box = "ubuntu/xenial64"
   # ip address
-  config.vm.network "private_network", ip: "192.168.16.04"
+  config.vm.network "private_network", ip: "192.168.16.16"
   # host name
   config.vm.hostname = "local.psufandb.test"
   # synced with NFS
