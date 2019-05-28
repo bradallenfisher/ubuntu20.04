@@ -8,11 +8,8 @@ git clone https://github.com/bradallenfisher/ubuntu16.04.git
 ```shell
 cd ubuntu16.04
 ```
-- add synced folder
-```shell
-mkdir psufandb
-```
-
+- add synced folder by cloning Acquia project
+  - you will need to have your keys added to the acquia cloud first
 - Start vagrant
 ```shell
 vagrant up
