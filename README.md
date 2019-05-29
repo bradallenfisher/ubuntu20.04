@@ -25,6 +25,8 @@ vagrant ssh
 ```
 ## Add frontend stack to VM
 ```shell
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+nvm install 8.10.0
 npm install --global gulp-cli
 npm install -g bower
 cd to theme(s)
