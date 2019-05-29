@@ -10,6 +10,10 @@ cd ubuntu16.04
 ```
 - add synced folder by cloning Acquia project
   - you will need to have your keys added to the acquia cloud first
+- add Vagrant Guest Additions
+```shell
+vagrant plugin install vagrant-vbguest
+```
 - Start vagrant
 ```shell
 vagrant up
