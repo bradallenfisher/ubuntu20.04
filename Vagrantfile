@@ -13,6 +13,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "local.psufandb.test"
   # synced with NFS
   config.vm.synced_folder "./psufandb", "/var/www/html/psufandb", type: "nfs"
+  config.vm.synced_folder "./local_db", "/var/www/local_db", type: "nfs"
 
   # run script as root
   config.vm.provision "shell",
