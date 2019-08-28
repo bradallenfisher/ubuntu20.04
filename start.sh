@@ -5,8 +5,10 @@ apt-get update -y
 apt-get upgrade -y
 export DEBIAN_FRONTEND=noninteractive
 
-# MySql
-apt-get -y install mysql-server
+#Install Mariadb
+apt-get install software-properties-common -y
+apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
+add-apt-repository 'deb [arch=amd64,i386,ppc64el] http://ftp.utexas.edu/mariadb/repo/10.1/ubuntu xenial main'
 
 # Install apache
 apt-get -y install apache2
