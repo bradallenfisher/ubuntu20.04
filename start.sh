@@ -11,7 +11,7 @@ apt -y install apache2
 apt -y install uuid uuid-runtime curl policycoreutils unzip patch git nano gcc make mcrypt
 
 #install php
-apt -y install software-properties-common python-software-properties
+apt -y install software-properties-common
 add-apt-repository -y ppa:ondrej/php
 apt update
 apt -y install php7.4 php7.4-common php7.4-mysql php7.4-ldap php7.4-cgi php7.4-xml php7.4-curl php7.4-gd php7.4-cli php7.4-fpm php7.4-dev php7.4-mbstring
