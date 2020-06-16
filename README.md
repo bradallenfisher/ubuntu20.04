@@ -9,7 +9,9 @@ useradd -m -s /bin/bash username
 usermod -aG sudo username
 ```
 ## Create mysql user
+
 ``` shell
+select host, user, password from mysql.user;
 ##change to meet IP needs...
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
