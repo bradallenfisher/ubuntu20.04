@@ -1,3 +1,6 @@
+apt install git && git clone https://github.com/bradallenfisher/ubuntu20.04.git && cd ubuntu20.04.git && chmod 700 install/start.sh
+
+
 ## Secure server
 ``` shell
 mysql_secure_installation
