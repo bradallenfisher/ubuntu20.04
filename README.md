@@ -27,11 +27,9 @@ nano /etc/default/ufw == check for IpV6
 ufw default deny incoming
 ufw default allow outgoing
 ufw allow ssh
-sudo ufw allow http
-ufw allow 80
+ufw allow 'Apache Full'
 ufw status
 ufw enable
-ufw allow 'Apache Full'
 ufw status
 ```
 
