@@ -20,5 +20,26 @@ select host, user, password from mysql.user;
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
 ```
+## Certbot setup
+```shell
+apt -y install certbot python3-certbot-apache
+nano /etc/default/ufw == check for IpV6
+ufw default deny incoming
+ufw default allow outgoing
+ufw allow ssh
+sudo ufw allow http
+ufw allow 80
+ufw status
+ufw enable
+ufw allow 'Apache Full'
+ufw status
+```
+
+## run certbot
+```shell
+certbot -d domains.com -d moredomains.com
+``` 
 
 
+## email outgoing 
+https://wpforms.com/how-to-set-up-wordpress-smtp-using-amazon-ses/
