@@ -38,6 +38,12 @@ ufw status
 certbot -d domains.com -d moredomains.com
 ``` 
 
+## perms in root
+```shell
+find . -type f -exec chmod 0644 {} \;
+find . -type d -exec chmod 0755 {} \;
+```
+
 
 ## email outgoing 
 https://wpforms.com/how-to-set-up-wordpress-smtp-using-amazon-ses/
