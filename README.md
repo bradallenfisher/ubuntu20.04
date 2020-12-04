@@ -56,3 +56,4 @@ certbot -d domains.com -d moredomains.com
 
 ## email outgoing 
 https://wpforms.com/how-to-set-up-wordpress-smtp-using-amazon-ses/
+https://www.linode.com/docs/guides/configure-postfix-to-send-mail-using-gmail-and-google-apps-on-debian-or-ubuntu/
