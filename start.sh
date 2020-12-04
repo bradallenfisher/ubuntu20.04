@@ -1,3 +1,6 @@
+##globals
+site=$1
+
 apt update && apt upgrade -y
 export DEBIAN_FRONTEND=noninteractive
 
@@ -75,3 +78,16 @@ apt install imagemagick
 apt install php7.3-imagick
 apt install php7.3-zip
 
+
+## server setup
+echo "##### Add server config /etc/hosts on term and enable the conf."
+cat vhost.txt > /etc/apache2/sites-available/000-default.conf
+sed -i "s/website/$site/g" /etc/apache2/sites-available/000-default.conf
+
+cd /var/www/html
+
+find . -type f -exec chmod 0644 {} \;
+find . -type d -exec chmod 0755 {} \;
+
+#create datbase
+mysql -e "create database if not exists fws_$site;"
