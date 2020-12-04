@@ -1,5 +1,5 @@
 ``` shell
-apt install git && git clone https://github.com/bradallenfisher/ubuntu20.04.git && cd ubuntu20.04 && chmod 700 start.sh && ./start.sh
+apt install git && git clone https://github.com/bradallenfisher/ubuntu20.04.git && cd ubuntu20.04 && chmod 700 start.sh
 ```
 
 ## Secure server
