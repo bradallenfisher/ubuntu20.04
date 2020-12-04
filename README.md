@@ -20,6 +20,21 @@ select host, user, password from mysql.user;
 CREATE USER 'newuser'@'localhost' IDENTIFIED BY 'password';
 GRANT ALL PRIVILEGES ON * . * TO 'newuser'@'localhost';
 ```
+
+## Setup Database/Sequel Pro
+https://drive.google.com/file/d/1Bm23MfFMyP6kJ-hTr2GUp7KbLGrjbWoZ/view?usp=sharing
+
+## Create Zip and Upload to new server in /var/www/
+```shell
+cd /var/www
+rm html
+unzip compressed.zip
+mv compressed domainname
+cd domainmname
+find . -type f -exec chmod 0644 {} \;
+find . -type d -exec chmod 0755 {} \;
+```
+
 ## Certbot setup
 ```shell
 apt -y install certbot python3-certbot-apache
@@ -37,12 +52,6 @@ ufw status
 ```shell
 certbot -d domains.com -d moredomains.com
 ``` 
-
-## perms in root
-```shell
-find . -type f -exec chmod 0644 {} \;
-find . -type d -exec chmod 0755 {} \;
-```
 
 
 ## email outgoing 
