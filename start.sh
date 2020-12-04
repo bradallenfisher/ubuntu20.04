@@ -66,6 +66,12 @@ service mysql restart
 service php7.3-fpm restart
 
 # Install Drush globally.
-curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
-ln -s /usr/local/bin/composer /usr/bin/composer
+#curl -sS https://getcomposer.org/installer | php
+#sudo mv composer.phar /usr/local/bin/composer
+#ln -s /usr/local/bin/composer /usr/bin/composer
+
+apt update -y
+apt install imagemagick
+apt install php7.3-imagick
+apt install php7.3-zip
+
