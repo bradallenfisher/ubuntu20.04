@@ -74,9 +74,9 @@ service php7.3-fpm restart
 #ln -s /usr/local/bin/composer /usr/bin/composer
 
 apt update -y
-apt install imagemagick
-apt install php7.3-imagick
-apt install php7.3-zip
+apt -y install imagemagick
+apt -y install php7.3-imagick
+apt -y install php7.3-zip
 
 
 ## server setup
