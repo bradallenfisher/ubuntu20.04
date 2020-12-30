@@ -36,20 +36,6 @@ echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.4/fpm/pool.d/www.conf
 echo request_slowlog_timeout = 2s >> /etc/php/7.4/fpm/pool.d/www.conf
 echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.4/fpm/pool.d/www.conf
 
-# BASIC PERFORMANCE SETTINGS
-#cat performance/compression.conf > /etc/apache2/conf-available/compression.conf
-#a2enconf compression
-#cat performance/content_transformation.conf > /etc/apache2/conf-available/content_transformation.conf
-#a2enconf content_transformation
-#cat performance/etags.conf > /etc/apache2/conf-available/etags.conf
-#a2enconf etags
-#cat performance/expires_headers.conf > /etc/apache2/conf-available/expires_headers.conf
-#a2enconf expires_headers
-#cat performance/file_concatenation.conf > /etc/apache2/conf-available/file_concatenation.conf
-#a2enconf file_concatenation
-#cat performance/filename-based_cache_busting.conf > /etc/apache2/conf-available/filename-based_cache_busting.conf
-#a2enconf filename-based_cache_busting
-
 # Security Basics
 cat security/security.conf > /etc/apache2/conf-available/security.conf
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini
@@ -73,5 +59,5 @@ apt -y install php-zip
 
 ## server setup
 echo "##### Add server config /etc/hosts on term and enable the conf."
-cat vhost.txt > /etc/apache2/sites-available/000-default.conf
+cat /vagrant/vhost.txt > /etc/apache2/sites-available/000-default.conf
 sed -i "s/website/$site/g" /etc/apache2/sites-available/000-default.conf
