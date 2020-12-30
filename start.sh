@@ -15,7 +15,7 @@ apt -y install uuid uuid-runtime curl policycoreutils unzip patch git nano gcc m
 
 #install php
 apt update
-apt -y install php php-common php-mysql php-ldap php-cgi php-xml php-curl php-gd php-cli php-fpm php-dev php-mbstring
+apt -y install php-fpm php-mysql php-ldap php-cgi php-xml php-curl php-gd php-cli  php-dev php-mbstring
 
 apt -y install libapache2-mod-fastcgi
 a2enmod actions fastcgi alias proxy_fcgi setenvif
@@ -57,7 +57,7 @@ sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/cgi/php.ini
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/cli/php.ini
 
 #opcache settings
-cat php/opcache.ini > /etc/php/7.3/mods-available/opcache.ini
+cat php/opcache.ini > /etc/php/7.4/mods-available/opcache.ini
 
 #Modules
 a2enmod expires
