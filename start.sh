@@ -14,15 +14,13 @@ apt -y install apache2
 apt -y install uuid uuid-runtime curl policycoreutils unzip patch git nano gcc make mcrypt
 
 #install php
-apt -y install software-properties-common
-add-apt-repository -y ppa:ondrej/php
 apt update
-apt -y install php7.3 php7.3-common php7.3-mysql php7.3-ldap php7.3-cgi php7.3-xml php7.3-curl php7.3-gd php7.3-cli php7.3-fpm php7.3-dev php7.3-mbstring
+apt -y install php php-common php-mysql php-ldap php-cgi php-xml php-curl php-gd php-cli php-fpm php-dev php-mbstring
 
 apt -y install libapache2-mod-fastcgi
 a2enmod actions fastcgi alias proxy_fcgi setenvif
-a2dismod php7.3
-a2enconf php7.3-fpm
+a2dismod php
+a2enconf php-fpm
 
 # PHP 7.3 FPM with apache settings
 cat php/apache_domain_php-fpm.conf > /etc/apache2/sites-available/000-default.conf
@@ -34,9 +32,9 @@ a2enmod ssl rewrite headers
 
 # Sanity Logs
 mkdir /var/log/php-fpm/
-echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.3/fpm/pool.d/www.conf
-echo request_slowlog_timeout = 2s >> /etc/php/7.3/fpm/pool.d/www.conf
-echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.3/fpm/pool.d/www.conf
+echo slowlog = /var/log/php-fpm/www-slow.log >> /etc/php/7.4/fpm/pool.d/www.conf
+echo request_slowlog_timeout = 2s >> /etc/php/7.4/fpm/pool.d/www.conf
+echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.4/fpm/pool.d/www.conf
 
 # BASIC PERFORMANCE SETTINGS
 #cat performance/compression.conf > /etc/apache2/conf-available/compression.conf
@@ -68,26 +66,12 @@ service apache2 restart
 service mysql restart
 service php7.3-fpm restart
 
-# Install Drush globally.
-#curl -sS https://getcomposer.org/installer | php
-#sudo mv composer.phar /usr/local/bin/composer
-#ln -s /usr/local/bin/composer /usr/bin/composer
-
 apt update -y
 apt -y install imagemagick
-apt -y install php7.3-imagick
-apt -y install php7.3-zip
-
+apt -y install php-imagick
+apt -y install php-zip
 
 ## server setup
 echo "##### Add server config /etc/hosts on term and enable the conf."
 cat vhost.txt > /etc/apache2/sites-available/000-default.conf
 sed -i "s/website/$site/g" /etc/apache2/sites-available/000-default.conf
-
-cd /var/www/html
-
-find . -type f -exec chmod 0644 {} \;
-find . -type d -exec chmod 0755 {} \;
-
-#create datbase
-mysql -e "create database if not exists fws_$site;"
