@@ -19,7 +19,7 @@ apt -y install php-fpm php-mysql php-ldap php-cgi php-xml php-curl php-gd php-cl
 
 apt -y install libapache2-mod-fastcgi
 a2enmod actions fastcgi alias proxy_fcgi setenvif
-a2enconf php-fpm
+a2enconf php7.4-fpm
 
 # PHP 7.3 FPM with apache settings
 cat /vagrant/php/apache_domain_php-fpm.conf > /etc/apache2/sites-available/000-default.conf
@@ -37,9 +37,9 @@ echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.4
 
 # Security Basics
 cat /vagrant/security/security.conf > /etc/apache2/conf-available/security.conf
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/cgi/php.ini
-sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/cli/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.4/fpm/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.4/cgi/php.ini
+sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.4/cli/php.ini
 
 #opcache settings
 cat /vagrant/php/opcache.ini > /etc/php/7.4/mods-available/opcache.ini
