@@ -17,7 +17,7 @@ apt -y install uuid uuid-runtime curl policycoreutils unzip patch git nano gcc m
 apt update
 apt -y install php-fpm php-mysql php-ldap php-cgi php-xml php-curl php-gd php-cli  php-dev php-mbstring
 
-apt -y install libapache2-mod-fastcgi
+# apt -y install libapache2-mod-fastcgi
 a2enmod actions fastcgi alias proxy_fcgi setenvif
 a2enconf php7.4-fpm
 
