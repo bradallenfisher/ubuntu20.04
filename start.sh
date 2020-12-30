@@ -19,11 +19,10 @@ apt -y install php-fpm php-mysql php-ldap php-cgi php-xml php-curl php-gd php-cl
 
 apt -y install libapache2-mod-fastcgi
 a2enmod actions fastcgi alias proxy_fcgi setenvif
-a2dismod php
 a2enconf php-fpm
 
 # PHP 7.3 FPM with apache settings
-cat php/apache_domain_php-fpm.conf > /etc/apache2/sites-available/000-default.conf
+cat /vagrant/php/apache_domain_php-fpm.conf > /etc/apache2/sites-available/000-default.conf
 # fix date timezone errors
 sed -i 's#;date.timezone =#date.timezone = "America/New_York"#g' /etc/php/7.3/fpm/php.ini
 
@@ -37,13 +36,13 @@ echo request_slowlog_timeout = 2s >> /etc/php/7.4/fpm/pool.d/www.conf
 echo php_admin_value[error_log] = /var/log/php-fpm/www-error.log >> /etc/php/7.4/fpm/pool.d/www.conf
 
 # Security Basics
-cat security/security.conf > /etc/apache2/conf-available/security.conf
+cat /vagrant/security/security.conf > /etc/apache2/conf-available/security.conf
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/fpm/php.ini
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/cgi/php.ini
 sed -i 's/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g' /etc/php/7.3/cli/php.ini
 
 #opcache settings
-cat php/opcache.ini > /etc/php/7.4/mods-available/opcache.ini
+cat /vagrant/php/opcache.ini > /etc/php/7.4/mods-available/opcache.ini
 
 #Modules
 a2enmod expires
