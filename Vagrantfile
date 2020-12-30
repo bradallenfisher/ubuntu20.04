@@ -5,23 +5,16 @@
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  # ubuntu 16
-  config.vm.box = "ubuntu/xenial64"
+  # ubuntu 20
+  config.vm.box = "bento/ubuntu-20.04"
   # ip address
-  config.vm.network "private_network", ip: "192.168.16.16"
+  config.vm.network "private_network", ip: "192.168.20.20"
   # host name
-  config.vm.hostname = "local.psufandb.test"
-  # synced with NFS
-  config.vm.synced_folder "./psufandb", "/var/www/html/psufandb", type: "nfs"
-  config.vm.synced_folder "./local_db", "/var/www/local_db", type: "nfs"
-
-  # run script as root
-  config.vm.provision "shell",
-    path: "vagrant.sh"
+  config.vm.hostname = "fws.test"
 
   # virtual box name
   config.vm.provider "virtualbox" do |v|
-    v.name = "psufandb"
+    v.name = "fws"
     v.memory = 4096
   end
 end
