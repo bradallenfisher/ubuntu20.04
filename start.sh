@@ -60,3 +60,6 @@ apt -y install php-zip
 echo "##### Add server config /etc/hosts on term and enable the conf."
 cat /vagrant/vhost.txt > /etc/apache2/sites-available/000-default.conf
 sed -i "s/website/$site/g" /etc/apache2/sites-available/000-default.conf
+
+## Install Node
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
