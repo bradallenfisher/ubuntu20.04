@@ -49,7 +49,7 @@ a2enmod expires
 
 service apache2 restart
 service mysql restart
-service php7.3-fpm restart
+service php7.4-fpm restart
 
 apt update -y
 apt -y install imagemagick
